@@ -1,0 +1,53 @@
+<template>
+    <!--日期选择器-->
+    <mt-datetime-picker
+      type="date"
+      ref="picker"
+      year-format="{value} 年"
+      month-format="{value} 月"
+      date-format="{value} 日"
+      @confirm="handleConfirm"
+      :startDate="startDate"
+      >
+    </mt-datetime-picker>
+
+    <!--时间选择器-->
+     <!-- <mt-datetime-picker
+  type="time"
+  ref="picker"
+  @confirm="handleConfirm">
+</mt-datetime-picker> -->
+
+    <!--日期时间选择器-->
+<!-- <mt-datetime-picker
+    ref="picker"
+    type="datetime"
+    @confirm="handleConfirm">
+  </mt-datetime-picker> -->
+      </div>
+    </div>
+  </div>
+</template>
+<script type="text/ecmascript-6">
+import { DatetimePicker } from 'mint-ui'
+import moment from 'moment'// 格式化时间
+import Vue from 'vue'
+Vue.component(DatetimePicker.name, DatetimePicker)
+export default {
+  data () {
+    return {
+      dateTime: '',
+      startDate: new Date()
+    }
+  },
+  methods: {
+    openPicker () {
+      this.$refs.picker.open()
+    },
+    handleConfirm (data) {
+      let date = moment(data).format('YYYY.MM.DD')
+      this.dateTime = date
+    }
+  }
+}
+</script>
